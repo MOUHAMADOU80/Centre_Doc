@@ -1,0 +1,17 @@
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\dao\ConnexionBD.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\exception\AccesRefuseException.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\exception\AuthentificationException.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\exception\ChampInvalideException.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\exception\DocumentIntrouvableException.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\exception\DoublonException.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\MainApp.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\Administrateur.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\Document.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\enums\NiveauAcces.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\enums\Role.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\enums\TypeDocument.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\Etudiant.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\Gestionnaire.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\Telechargement.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\Ufr.java
+C:\Users\ASUS\Documents\COURS\SEMESTRE_6\Poo_2\centre-doc-ugb\centredoc\src\main\java\sn\ugb\centredoc\model\Utilisateur.java
