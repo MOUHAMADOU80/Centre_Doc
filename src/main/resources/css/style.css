@@ -1,0 +1,129 @@
+/* ===== Variables de couleurs UGB ===== */
+.root {
+    -couleur-marron: #5B3A29;
+    -couleur-beige-clair: #F6EBD9;
+    -couleur-beige-fonce: #D7C4A5;
+    -couleur-gris-clair: #EEEBEB;
+    -couleur-gris-fonce: #4A4A4A;
+
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+}
+
+/* ===== Colonne de gauche (image de fond) ===== */
+.login-fond {
+    -fx-background-image: url("../images/fond.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+/* ===== Bloc en haut (logo + texte) ===== */
+.titre-ugb {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -couleur-marron;
+}
+
+.sous-titre-ugb {
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-text-fill: -couleur-marron;
+}
+
+.titre-bas {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.sous-titre-bas {
+    -fx-font-size: 12px;
+    -fx-text-fill: derive(white, -15%);
+    -fx-wrap-text: true;
+    -fx-max-width: 400px;
+}
+
+/* ===== Bandeau marron en bas de l'image ===== */
+.bandeau-bas {
+    -fx-background-color: linear-gradient(to top, rgba(91,58,41,0.92), rgba(91,58,41,0.75) 70%, transparent);
+    -fx-background-radius: 40 40 0 0;
+    -fx-pref-width: 560px;
+    -fx-max-height: 230px;
+    -fx-pref-height: 230px;
+}
+
+.icone-feature {
+    -fx-font-size: 22px;
+}
+
+.label-feature {
+    -fx-font-size: 10px;
+    -fx-text-fill: white;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-max-width: 90px;
+}
+
+/* ===== Colonne de droite (carte de connexion) ===== */
+.login-panneau-droit {
+    -fx-background-color: -couleur-beige-clair;
+}
+
+.carte-connexion {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 4);
+    -fx-max-height: 560px;
+}
+
+.icone-connexion {
+    -fx-font-size: 32px;
+    -fx-text-fill: -couleur-marron;
+}
+
+.titre-connexion {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -couleur-marron;
+}
+
+.sous-titre-connexion {
+    -fx-font-size: 13px;
+    -fx-text-fill: -couleur-gris-fonce;
+}
+
+.info-etudiant {
+    -fx-font-size: 11px;
+    -fx-text-fill: -couleur-gris-fonce;
+    -fx-background-color: -couleur-gris-clair;
+    -fx-padding: 8px;
+    -fx-background-radius: 6px;
+}
+
+/* ===== Champs de saisie ===== */
+.text-field, .password-field, .combo-box {
+    -fx-background-color: -couleur-gris-clair;
+    -fx-background-radius: 6px;
+    -fx-border-color: -couleur-beige-fonce;
+    -fx-border-radius: 6px;
+    -fx-padding: 8px;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: -couleur-marron;
+}
+
+/* ===== Bouton principal ===== */
+.bouton-principal {
+    -fx-background-color: -couleur-marron;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+}
+
+.bouton-principal:hover {
+    -fx-background-color: derive(#5B3A29, -15%);
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.ugb.centredoc.controller.LoginController"
+      prefWidth="1000" prefHeight="620"
+      stylesheets="@../css/style.css">
+
+    <!-- Colonne de gauche : image de fond + texte -->
+    <StackPane HBox.hgrow="ALWAYS" styleClass="login-fond">
+
+        <VBox alignment="TOP_LEFT" spacing="10" styleClass="bloc-haut" StackPane.alignment="TOP_LEFT">
+            <padding><Insets top="20" bottom="20" left="30" right="30"/></padding>
+            <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+                <Image url="@../images/logo.jpg"/>
+            </ImageView>
+            <Label text="UGB" styleClass="titre-ugb"/>
+            <Label text="Universite Gaston Berger" styleClass="sous-titre-ugb"/>
+            <Label text="Saint-Louis du Senegal" styleClass="sous-titre-ugb"/>
+        </VBox>
+
+        <VBox alignment="BOTTOM_LEFT" spacing="16" styleClass="bandeau-bas" StackPane.alignment="BOTTOM_LEFT">
+            <padding><Insets top="30" bottom="30" left="40" right="40"/></padding>
+
+            <Label text="Centre de Documentation" styleClass="titre-bas"/>
+            <Label text="Systeme d'information des centres de documentation" styleClass="sous-titre-bas"/>
+
+            <HBox spacing="35" alignment="CENTER_LEFT">
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="&#128214;" styleClass="icone-feature"/>
+                    <Label text="Acces aux documents" styleClass="label-feature"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="&#128269;" styleClass="icone-feature"/>
+                    <Label text="Recherche simplifiee" styleClass="label-feature"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="&#128274;" styleClass="icone-feature"/>
+                    <Label text="Droits d'acces securises" styleClass="label-feature"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="&#11015;" styleClass="icone-feature"/>
+                    <Label text="Telechargement des PDF" styleClass="label-feature"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </StackPane>
+
+    <!-- Colonne de droite : carte de connexion -->
+    <StackPane prefWidth="480" styleClass="login-panneau-droit">
+        <VBox alignment="CENTER" spacing="14" maxWidth="360" styleClass="carte-connexion">
+            <padding><Insets top="40" bottom="40" left="40" right="40"/></padding>
+
+            <Label text="&#128214;" styleClass="icone-connexion"/>
+            <Label text="Connexion" styleClass="titre-connexion"/>
+            <Label text="Accedez a votre espace" styleClass="sous-titre-connexion"/>
+
+            <ComboBox fx:id="choixRole" promptText="Selectionnez votre role" maxWidth="Infinity"
+                      onAction="#onChangerRole">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Administrateur"/>
+                        <String fx:value="Gestionnaire"/>
+                        <String fx:value="Etudiant"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <TextField fx:id="champIdentifiant" promptText="Email, code etudiant ou nom d'utilisateur"/>
+            <PasswordField fx:id="champMotDePasse" promptText="Mot de passe (si necessaire)"/>
+
+            <VBox fx:id="blocEtudiant" spacing="14" visible="false" managed="false">
+                <TextField fx:id="champNomEtudiant" promptText="Nom"/>
+                <TextField fx:id="champPrenomEtudiant" promptText="Prenom"/>
+                <TextField fx:id="champCodeEtudiant" promptText="Code etudiant"/>
+            </VBox>
+
+            <Button text="Se connecter" onAction="#onConnecter" maxWidth="Infinity" styleClass="bouton-principal"/>
+
+            <Label text="Pour les etudiants : nom, prenom, email UGB et code etudiant (sans mot de passe)."
+                   wrapText="true" styleClass="info-etudiant"/>
+        </VBox>
+    </StackPane>
+
+</HBox>
