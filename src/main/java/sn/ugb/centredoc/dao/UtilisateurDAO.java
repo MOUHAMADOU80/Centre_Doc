@@ -189,4 +189,14 @@ public class UtilisateurDAO {
         u.setIdUtilisateur(rs.getInt("id_utilisateur"));
         return u;
     }
+    public Utilisateur trouverGestionnaireParUfr(int idUfr) throws SQLException {
+    String sql = "SELECT * FROM utilisateurs WHERE ufr = ? AND role = 'GESTIONNAIRE'";
+    try (Connection conn = ConnexionBD.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, idUfr);
+        try (ResultSet rs = ps.executeQuery()) {
+            return rs.next() ? mapResultSetToUtilisateur(rs) : null;
+        }
+    }
+}
 }

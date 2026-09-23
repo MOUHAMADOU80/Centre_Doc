@@ -1,8 +1,12 @@
 sn\ugb\centredoc\model\enums\NiveauAcces.class
+sn\ugb\centredoc\controller\admin\UfrController$UfrLigne.class
+sn\ugb\centredoc\controller\admin\UfrController.class
 sn\ugb\centredoc\util\Session.class
 sn\ugb\centredoc\exception\ChampInvalideException.class
+sn\ugb\centredoc\controller\admin\UtilisateursController$GestionnaireLigne.class
 sn\ugb\centredoc\exception\DocumentIntrouvableException.class
 sn\ugb\centredoc\exception\DoublonException.class
+sn\ugb\centredoc\controller\admin\UtilisateursController$1.class
 sn\ugb\centredoc\model\Gestionnaire.class
 sn\ugb\centredoc\model\Utilisateur.class
 sn\ugb\centredoc\dao\UtilisateurDAO.class
@@ -20,9 +24,12 @@ sn\ugb\centredoc\model\Telechargement.class
 sn\ugb\centredoc\service\UfrService.class
 sn\ugb\centredoc\dao\UtilisateurDAO$1.class
 sn\ugb\centredoc\util\HashUtil.class
+sn\ugb\centredoc\controller\admin\UtilisateursController.class
 sn\ugb\centredoc\dao\ConnexionBD.class
 sn\ugb\centredoc\exception\AuthentificationException.class
+sn\ugb\centredoc\controller\admin\AdminDashboardController.class
 sn\ugb\centredoc\exception\AccesRefuseException.class
 sn\ugb\centredoc\model\Document.class
 sn\ugb\centredoc\model\Administrateur.class
 sn\ugb\centredoc\model\Etudiant.class
+sn\ugb\centredoc\controller\admin\UfrController$1.class

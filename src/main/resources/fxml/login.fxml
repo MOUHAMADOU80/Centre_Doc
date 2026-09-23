@@ -21,7 +21,7 @@
         <VBox alignment="TOP_LEFT" spacing="10" styleClass="bloc-haut" StackPane.alignment="TOP_LEFT">
             <padding><Insets top="20" bottom="20" left="30" right="30"/></padding>
             <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
-                <Image url="@../images/logo.jpg"/>
+                <Image url="@../images/logo.png"/>
             </ImageView>
             <Label text="UGB" styleClass="titre-ugb"/>
             <Label text="Universite Gaston Berger" styleClass="sous-titre-ugb"/>

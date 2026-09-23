@@ -62,4 +62,8 @@ public class UtilisateurService {
     public List<Utilisateur> rechercherParNomOuEmail(String motCle) throws SQLException {
         return utilisateurDAO.rechercherParNomOuEmail(motCle);
     }
+    public String trouverNomResponsable(int idUfr) throws SQLException {
+    Utilisateur gestionnaire = utilisateurDAO.trouverGestionnaireParUfr(idUfr);
+    return (gestionnaire != null) ? gestionnaire.getPrenom() + " " + gestionnaire.getNom() : "Non assigne";
+}
 }

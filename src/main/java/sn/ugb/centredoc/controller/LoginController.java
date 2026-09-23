@@ -1,11 +1,18 @@
 package sn.ugb.centredoc.controller;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import sn.ugb.centredoc.exception.AuthentificationException;
+import sn.ugb.centredoc.model.Administrateur;
 import sn.ugb.centredoc.model.Utilisateur;
 import sn.ugb.centredoc.service.AuthService;
 import sn.ugb.centredoc.util.Alertes;
@@ -59,13 +66,35 @@ public class LoginController {
             };
 
             Session.connecter(u);
-            Alertes.afficherSucces("Bienvenue " + u.getPrenom() + " !");
-            // TODO : ouvrir le bon dashboard selon u.getRole()
+            ouvrirEspaceSelonRole(u);
 
         } catch (AuthentificationException e) {
             Alertes.afficherErreur(e.getMessage());
         } catch (Exception e) {
             Alertes.afficherErreur("Erreur technique : " + e.getMessage());
+        }
+    }
+
+    private void ouvrirEspaceSelonRole(Utilisateur u) {
+        if (u instanceof Administrateur) {
+            chargerEcran("/fxml/admin_dashboard.fxml");
+        } else {
+            // TODO (Ousmane) : dashboard Gestionnaire
+            // TODO (Maoudo) : ecran de recherche Etudiant
+            Alertes.afficherErreur("Cet espace n'est pas encore disponible pour ce role.");
+        }
+    }
+
+    private void chargerEcran(String cheminFxml) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(cheminFxml));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) champIdentifiant.getScene().getWindow();
+            stage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            Alertes.afficherErreur("Erreur d'ouverture de l'ecran : " + e.getMessage());
         }
     }
 }

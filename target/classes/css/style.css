@@ -16,7 +16,6 @@
     -fx-background-position: center center;
 }
 
-/* ===== Bloc en haut (logo + texte) ===== */
 .titre-ugb {
     -fx-font-size: 26px;
     -fx-font-weight: bold;
@@ -126,4 +125,137 @@
 
 .bouton-principal:hover {
     -fx-background-color: derive(#5B3A29, -15%);
+}
+
+/* ============================================================ */
+/* ===== DASHBOARD ADMIN ===== */
+/* ============================================================ */
+
+/* ===== Barre laterale ===== */
+.sidebar {
+    -fx-background-color: -couleur-marron;
+}
+
+.sidebar-titre {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.sidebar-bouton {
+    -fx-background-color: transparent;
+    -fx-text-fill: -couleur-beige-clair;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10px 14px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.sidebar-bouton:hover {
+    -fx-background-color: derive(#5B3A29, 15%);
+}
+
+.sidebar-bouton-actif {
+    -fx-background-color: -couleur-beige-clair;
+    -fx-text-fill: -couleur-marron;
+    -fx-font-weight: bold;
+}
+
+.sidebar-bouton-deconnexion {
+    -fx-text-fill: #E8A0A0;
+}
+
+/* ===== Zone de contenu principale ===== */
+.zone-contenu {
+    -fx-background-color: -couleur-gris-clair;
+}
+
+.page-titre {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -couleur-marron;
+}
+
+/* ===== Cartes statistiques ===== */
+.carte-stat {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-padding: 16px;
+    -fx-spacing: 6px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+
+.carte-stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -couleur-gris-fonce;
+}
+
+.carte-stat-valeur {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -couleur-marron;
+}
+
+/* ===== Cartes graphiques ===== */
+.carte-graphique {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-padding: 16px;
+    -fx-spacing: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+
+.carte-graphique-titre {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -couleur-marron;
+}
+
+/* ============================================================ */
+/* ===== TABLEAUX (UFR, Utilisateurs) ===== */
+/* ============================================================ */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -couleur-marron;
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent -couleur-gris-clair transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: derive(#EEEBEB, 50%);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: derive(#D7C4A5, 20%);
+}
+
+/* ===== Boutons d'action dans les tableaux ===== */
+.table-view .button {
+    -fx-background-color: -couleur-beige-fonce;
+    -fx-text-fill: -couleur-marron;
+    -fx-font-size: 11px;
+    -fx-background-radius: 4px;
+    -fx-padding: 4px 10px;
+    -fx-cursor: hand;
+}
+
+.table-view .button:hover {
+    -fx-background-color: derive(#D7C4A5, -15%);
 }

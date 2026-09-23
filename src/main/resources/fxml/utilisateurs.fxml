@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.ugb.centredoc.controller.admin.UtilisateursController"
+      spacing="16">
+    <padding><Insets top="24" bottom="24" left="24" right="24"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Gestion des utilisateurs" styleClass="page-titre" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button text="+ Ajouter un utilisateur" onAction="#onOuvrirFormulaireAjout" styleClass="bouton-principal"/>
+    </HBox>
+
+    <TextField fx:id="champRecherche" promptText="Rechercher un gestionnaire (nom, prenom, email)"
+               onKeyReleased="#onRecherche" maxWidth="400"/>
+
+    <TableView fx:id="tableUtilisateurs" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNom" text="Nom" prefWidth="130"/>
+            <TableColumn fx:id="colPrenom" text="Prenom" prefWidth="130"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="220"/>
+            <TableColumn fx:id="colUfr" text="UFR" prefWidth="200"/>
+            <TableColumn fx:id="colActions" text="Actions" prefWidth="140"/>
+        </columns>
+    </TableView>
+
+</VBox>
