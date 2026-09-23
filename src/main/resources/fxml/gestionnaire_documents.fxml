@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.ugb.centredoc.controller.gestionnaire.DocumentsController"
+      spacing="16">
+    <padding><Insets top="24" bottom="24" left="24" right="24"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Gestion des documents" styleClass="page-titre" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button text="+ Ajouter un document" onAction="#onOuvrirFormulaireAjout" styleClass="bouton-principal"/>
+    </HBox>
+
+    <TableView fx:id="tableDocuments" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colTitre" text="Titre" prefWidth="260"/>
+            <TableColumn fx:id="colAuteur" text="Auteur" prefWidth="160"/>
+            <TableColumn fx:id="colAnnee" text="Annee" prefWidth="70"/>
+            <TableColumn fx:id="colType" text="Type" prefWidth="90"/>
+            <TableColumn fx:id="colAcces" text="Acces" prefWidth="150"/>
+            <TableColumn fx:id="colActions" text="Actions" prefWidth="160"/>
+        </columns>
+    </TableView>
+
+</VBox>

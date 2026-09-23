@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.ugb.centredoc.controller.gestionnaire.GestionnaireDashboardHomeController"
+      spacing="20">
+    <padding><Insets top="24" bottom="24" left="24" right="24"/></padding>
+
+    <Label text="Tableau de bord" styleClass="page-titre"/>
+
+    <HBox spacing="16">
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Documents de mon UFR" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbDocuments" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Telechargements" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbTelechargements" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+    </HBox>
+
+    <VBox styleClass="carte-graphique">
+        <Label text="Documents par type" styleClass="carte-graphique-titre"/>
+        <PieChart fx:id="graphiqueRepartition" legendVisible="true" prefHeight="220"/>
+    </VBox>
+
+</VBox>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.ugb.centredoc.controller.admin.AdminDashboardController"
+      spacing="20">
+    <padding><Insets top="24" bottom="24" left="24" right="24"/></padding>
+
+    <Label text="Tableau de bord" styleClass="page-titre"/>
+
+    <HBox spacing="16">
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Utilisateurs" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbUtilisateurs" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Documents" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbDocuments" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Telechargements" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbTelechargements" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="UFR" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbUfr" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="16">
+        <VBox styleClass="carte-graphique" HBox.hgrow="ALWAYS">
+            <Label text="Repartition des documents par type" styleClass="carte-graphique-titre"/>
+            <PieChart fx:id="graphiqueRepartition" legendVisible="true" prefHeight="220"/>
+        </VBox>
+        <VBox styleClass="carte-graphique" HBox.hgrow="ALWAYS">
+            <Label text="Activite des telechargements" styleClass="carte-graphique-titre"/>
+            <BarChart fx:id="graphiqueActivite" prefHeight="220" legendVisible="false">
+                <xAxis><CategoryAxis/></xAxis>
+                <yAxis><NumberAxis/></yAxis>
+            </BarChart>
+        </VBox>
+    </HBox>
+
+</VBox>

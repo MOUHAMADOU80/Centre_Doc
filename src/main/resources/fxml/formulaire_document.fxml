@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="sn.ugb.centredoc.controller.gestionnaire.FormulaireDocumentController"
+          hgap="10" vgap="10" prefWidth="420">
+    <padding><Insets top="16" bottom="16" left="16" right="16"/></padding>
+
+    <columnConstraints>
+        <ColumnConstraints minWidth="110"/>
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
+
+    <Label text="Titre *" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="champTitre" promptText="Ex: Optimisation des reseaux..." GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Auteur *" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="champAuteur" promptText="Etudiant redacteur" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Encadrant" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="champEncadrant" promptText="Pr. Nom Prenom" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Annee *" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="champAnnee" promptText="2026" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Type *" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="champType" maxWidth="Infinity" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Discipline" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField fx:id="champDiscipline" promptText="Ex: reseaux, deep learning" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Label text="Mots-cles" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField fx:id="champMotsCles" promptText="separes par des virgules" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <Label text="Fichier PDF" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+    <TextField fx:id="champCheminPdf" promptText="Chemin ou aucun fichier choisi" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+    <Label text="Niveau d'acces *" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="champNiveauAcces" maxWidth="Infinity" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+    <Label text="Resume" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+    <TextArea fx:id="champResume" promptText="Decrivez brievement le document..." prefRowCount="4" wrapText="true"
+              GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+</GridPane>

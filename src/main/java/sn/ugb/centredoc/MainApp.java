@@ -1,16 +1,25 @@
 package sn.ugb.centredoc;
 
-import sn.ugb.centredoc.dao.ConnexionBD;
-import java.sql.Connection;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class MainApp {
+public class MainApp extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        stage.setTitle("Centre de Documentation UGB");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public static void main(String[] args) {
-        try {
-            Connection conn = ConnexionBD.getConnection();
-            System.out.println("Connexion reussie a la base centre_doc !");
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("Erreur de connexion : " + e.getMessage());
-        }
+        launch(args);
     }
 }
