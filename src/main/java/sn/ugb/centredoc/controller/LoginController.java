@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sn.ugb.centredoc.exception.AuthentificationException;
 import sn.ugb.centredoc.model.Administrateur;
+import sn.ugb.centredoc.model.Gestionnaire;
 import sn.ugb.centredoc.model.Utilisateur;
 import sn.ugb.centredoc.service.AuthService;
 import sn.ugb.centredoc.util.Alertes;
@@ -75,15 +76,16 @@ public class LoginController {
         }
     }
 
-    private void ouvrirEspaceSelonRole(Utilisateur u) {
-        if (u instanceof Administrateur) {
-            chargerEcran("/fxml/admin_dashboard.fxml");
-        } else {
-            // TODO (Ousmane) : dashboard Gestionnaire
-            // TODO (Maoudo) : ecran de recherche Etudiant
-            Alertes.afficherErreur("Cet espace n'est pas encore disponible pour ce role.");
-        }
+   private void ouvrirEspaceSelonRole(Utilisateur u) {
+    if (u instanceof Administrateur) {
+        chargerEcran("/fxml/admin_dashboard.fxml");
+    } else if (u instanceof Gestionnaire) {
+        chargerEcran("/fxml/gestionnaire_dashboard.fxml");
+    } else {
+        // TODO (Ousmane) : ecran de recherche Etudiant
+        Alertes.afficherErreur("Cet espace n'est pas encore disponible pour ce role.");
     }
+}
 
     private void chargerEcran(String cheminFxml) {
         try {
