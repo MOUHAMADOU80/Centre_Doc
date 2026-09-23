@@ -11,8 +11,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sn.ugb.centredoc.controller.etudiant.RechercheController;
 import sn.ugb.centredoc.exception.AuthentificationException;
 import sn.ugb.centredoc.model.Administrateur;
+import sn.ugb.centredoc.model.Etudiant;
 import sn.ugb.centredoc.model.Gestionnaire;
 import sn.ugb.centredoc.model.Utilisateur;
 import sn.ugb.centredoc.service.AuthService;
@@ -76,16 +78,34 @@ public class LoginController {
         }
     }
 
-   private void ouvrirEspaceSelonRole(Utilisateur u) {
-    if (u instanceof Administrateur) {
-        chargerEcran("/fxml/admin_dashboard.fxml");
-    } else if (u instanceof Gestionnaire) {
-        chargerEcran("/fxml/gestionnaire_dashboard.fxml");
-    } else {
-        // TODO (Ousmane) : ecran de recherche Etudiant
-        Alertes.afficherErreur("Cet espace n'est pas encore disponible pour ce role.");
+    private void ouvrirEspaceSelonRole(Utilisateur u) {
+        if (u instanceof Administrateur) {
+            chargerEcran("/fxml/admin_dashboard.fxml");
+        } else if (u instanceof Gestionnaire) {
+            chargerEcran("/fxml/gestionnaire_dashboard.fxml");
+        } else if (u instanceof Etudiant) {
+            ouvrirEspaceEtudiant((Etudiant) u);
+        } else {
+            Alertes.afficherErreur("Cet espace n'est pas encore disponible pour ce role.");
+        }
     }
-}
+
+    /** Ouvre l'ecran de recherche etudiant (module Ousmane) et lui transmet l'utilisateur connecte. */
+    private void ouvrirEspaceEtudiant(Etudiant etudiant) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/recherche.fxml"));
+            Parent root = loader.load();
+
+            RechercheController controleur = loader.getController();
+            controleur.setUtilisateur(etudiant);
+
+            Stage stage = (Stage) champIdentifiant.getScene().getWindow();
+            stage.setScene(new Scene(root, 1280, 760));
+
+        } catch (IOException e) {
+            Alertes.afficherErreur("Erreur d'ouverture de l'espace etudiant : " + e.getMessage());
+        }
+    }
 
     private void chargerEcran(String cheminFxml) {
         try {
