@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="racine" styleClass="app-shell" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.ugb.centredoc.controller.etudiant.HistoriqueController">
+    <stylesheets><URL value="@../css/etudiant.css"/></stylesheets>
+
+    <center>
+        <VBox spacing="16" styleClass="contenu">
+            <padding><Insets top="24" right="28" bottom="24" left="28"/></padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <VBox HBox.hgrow="ALWAYS">
+                    <Label text="Historique des téléchargements" styleClass="titre"/>
+                    <Label text="Consultez la liste de vos téléchargements" styleClass="sous-titre"/>
+                </VBox>
+                <Button text="⬇ Télécharger un document" styleClass="bouton-principal" onAction="#onNouveauTelechargement"/>
+            </HBox>
+
+            <TableView fx:id="table" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colDocument" text="Document" prefWidth="320"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="160"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                    <TableColumn fx:id="colAction" text="Action" prefWidth="110"/>
+                </columns>
+                <placeholder><Label text="Aucun téléchargement pour l'instant."/></placeholder>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

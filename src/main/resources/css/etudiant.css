@@ -1,0 +1,88 @@
+.page { -fx-background-color: #F6EBD9; }
+.app-shell { -fx-background-color: #F6EBD9; }
+.contenu { -fx-background-color: #F6EBD9; }
+
+/* ===== Barre latérale ===== */
+.sidebar {
+    -fx-background-color: #241812;
+    -fx-pref-width: 230;
+    -fx-min-width: 230;
+    -fx-padding: 0 0 16 0;
+}
+.sidebar-logo {
+    -fx-padding: 22 16 22 16;
+    -fx-border-color: transparent transparent #3A2A20 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.sidebar-logo-titre { -fx-text-fill: #F6EBD9; -fx-font-size: 20px; -fx-font-weight: bold; }
+.sidebar-logo-sous { -fx-text-fill: #B8A48F; -fx-font-size: 10px; }
+
+.sidebar-nav { -fx-padding: 16 10 0 10; }
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #D8C7B4;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 14 10 14;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.sidebar-item:hover { -fx-background-color: #3A2A20; }
+.sidebar-item-actif { -fx-background-color: #5B3A29; -fx-text-fill: white; -fx-font-weight: bold; }
+.sidebar-deconnexion {
+    -fx-background-color: transparent; -fx-text-fill: #D8C7B4; -fx-padding: 10 14 10 24;
+    -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-font-size: 13px;
+}
+.sidebar-deconnexion:hover { -fx-text-fill: white; }
+
+/* ===== Barre du haut ===== */
+.topbar {
+    -fx-background-color: white;
+    -fx-padding: 12 24 12 24;
+    -fx-border-color: transparent transparent #E4D6C0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.topbar-recherche { -fx-background-color: #F6EBD9; -fx-background-radius: 8; -fx-padding: 8 12 8 12; }
+.topbar-icone { -fx-font-size: 18px; -fx-text-fill: #7A6A5C; }
+.topbar-role { -fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A; }
+.topbar-code { -fx-font-size: 11px; -fx-text-fill: #7A6A5C; }
+.topbar-avatar {
+    -fx-background-color: #D7C4A5; -fx-background-radius: 20;
+    -fx-min-width: 36; -fx-min-height: 36; -fx-alignment: CENTER; -fx-font-size: 16px;
+}
+
+/* ===== Titres ===== */
+.titre { -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #5B3A29; }
+.sous-titre { -fx-text-fill: #7A6A5C; -fx-font-size: 12px; }
+.titre-section { -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #5B3A29; }
+
+/* ===== Boutons ===== */
+.bouton-principal { -fx-background-color: #5B3A29; -fx-text-fill: white;
+                    -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 8 16 8 16; }
+.bouton-secondaire { -fx-background-color: #D7C4A5; -fx-text-fill: #5B3A29;
+                     -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 8 16 8 16; }
+.bouton-icone { -fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-text-fill: #5B3A29; }
+.lien { -fx-background-color: transparent; -fx-text-fill: #5B3A29;
+        -fx-underline: true; -fx-cursor: hand; -fx-padding: 0; }
+
+/* ===== Cartes ===== */
+.carte { -fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18; }
+.champ-nom { -fx-text-fill: #7A6A5C; -fx-font-weight: bold; -fx-font-size: 12px; }
+.champ-valeur { -fx-text-fill: #4A4A4A; -fx-font-size: 13px; }
+.note-acces { -fx-text-fill: #7A6A5C; -fx-font-size: 11px; }
+.icone-pdf-fiche { -fx-font-size: 34px; }
+
+/* ===== Badges ===== */
+.badge { -fx-padding: 3 10 3 10; -fx-background-radius: 10; -fx-font-size: 10px; -fx-font-weight: bold; }
+.badge-ok { -fx-background-color: #DDEFDD; -fx-text-fill: #2E7D32; }
+.badge-consult { -fx-background-color: #FBE8C8; -fx-text-fill: #B26A00; }
+.badge-restreint { -fx-background-color: #F8D7D7; -fx-text-fill: #B3261E; }
+.badge-type { -fx-background-color: #EDE3F5; -fx-text-fill: #6A3FA0; }
+
+/* ===== Tableaux ===== */
+.table-view { -fx-background-color: white; -fx-background-radius: 10; }
+.table-view .column-header-background { -fx-background-color: #FAF3E7; -fx-background-radius: 10 10 0 0; }
+.table-view .column-header .label { -fx-text-fill: #7A6A5C; -fx-font-size: 11px; -fx-font-weight: bold; }
+.table-row-cell { -fx-background-color: white; -fx-border-color: transparent transparent #F0E6D6 transparent; }
+.table-row-cell:odd { -fx-background-color: #FDFAF4; }
+.sidebar-logo { -fx-alignment: CENTER_LEFT; }

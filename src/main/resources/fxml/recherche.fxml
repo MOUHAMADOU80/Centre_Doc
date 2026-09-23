@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="racine" styleClass="app-shell" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.ugb.centredoc.controller.etudiant.RechercheController">
+    <stylesheets><URL value="@../css/etudiant.css"/></stylesheets>
+
+    <center>
+        <VBox spacing="16" styleClass="contenu">
+            <padding><Insets top="24" right="28" bottom="24" left="28"/></padding>
+
+            <Label text="Recherche de documents" styleClass="titre"/>
+            <Label text="Trouvez facilement les documents dont vous avez besoin" styleClass="sous-titre"/>
+
+            <HBox spacing="10">
+                <TextField fx:id="champRecherche" promptText="Rechercher un document, un mot-clé..." HBox.hgrow="ALWAYS"/>
+                <Button text="🔍 Rechercher" styleClass="bouton-principal" onAction="#onRechercher" defaultButton="true"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <ComboBox fx:id="comboType" prefWidth="150"/>
+                <ComboBox fx:id="comboUfr" prefWidth="220"/>
+                <ComboBox fx:id="comboAnnee" prefWidth="150"/>
+            </HBox>
+
+            <Label fx:id="labelResultats" styleClass="titre-section"/>
+
+            <TableView fx:id="table" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colTitre" text="Titre du document" prefWidth="280"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="90"/>
+                    <TableColumn fx:id="colUfr" text="UFR" prefWidth="110"/>
+                    <TableColumn fx:id="colAuteur" text="Auteur" prefWidth="160"/>
+                    <TableColumn fx:id="colDate" text="Année" prefWidth="80"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="100"/>
+                </columns>
+                <placeholder><Label text="Aucun document trouvé."/></placeholder>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
