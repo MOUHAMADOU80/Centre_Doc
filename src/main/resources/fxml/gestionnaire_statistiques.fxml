@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.ugb.centredoc.controller.gestionnaire.StatistiquesController"
+      spacing="20">
+    <padding><Insets top="24" bottom="24" left="24" right="24"/></padding>
+
+    <Label text="Statistiques et rapports" styleClass="page-titre"/>
+
+    <HBox spacing="16">
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Utilisateurs" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbUtilisateurs" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Documents" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbDocuments" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+        <VBox styleClass="carte-stat" HBox.hgrow="ALWAYS">
+            <Label text="Telechargements" styleClass="carte-stat-label"/>
+            <Label fx:id="labelNbTelechargements" text="0" styleClass="carte-stat-valeur"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+        <VBox styleClass="carte-graphique" HBox.hgrow="ALWAYS">
+            <Label text="Top 5 documents les plus telecharges" styleClass="carte-graphique-titre"/>
+            <ListView fx:id="listeTopDocuments" VBox.vgrow="ALWAYS"/>
+        </VBox>
+        <VBox styleClass="carte-graphique" HBox.hgrow="ALWAYS">
+            <Label text="Repartition par discipline" styleClass="carte-graphique-titre"/>
+            <ListView fx:id="listeRepartitionDiscipline" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </HBox>
+
+</VBox>
