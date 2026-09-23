@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="racine" styleClass="app-shell" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.ugb.centredoc.controller.etudiant.FicheDocumentController">
+    <stylesheets><URL value="@../css/etudiant.css"/></stylesheets>
+
+    <center>
+        <VBox spacing="16" styleClass="contenu">
+            <padding><Insets top="24" right="28" bottom="24" left="28"/></padding>
+
+            <HBox spacing="14" alignment="CENTER_LEFT">
+                <Label text="📄" styleClass="icone-pdf-fiche"/>
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label fx:id="labelTitre" styleClass="titre" wrapText="true"/>
+                    <HBox spacing="8">
+                        <Label fx:id="badgeDiscipline" styleClass="badge badge-consult"/>
+                        <Label text="PDF" styleClass="badge badge-type"/>
+                        <Label fx:id="badgeUfrCourt" styleClass="badge badge-type"/>
+                    </HBox>
+                </VBox>
+                <VBox alignment="CENTER_RIGHT" spacing="2">
+                    <Label fx:id="labelDate" styleClass="sous-titre"/>
+                    <Label fx:id="labelTaille" styleClass="sous-titre"/>
+                </VBox>
+            </HBox>
+
+            <HBox spacing="18">
+                <VBox styleClass="carte" spacing="12" HBox.hgrow="ALWAYS">
+                    <Label text="Informations générales" styleClass="titre-section"/>
+                    <GridPane hgap="16" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="130"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <Label text="Titre" styleClass="champ-nom" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="valTitre" styleClass="champ-valeur" wrapText="true" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Type" styleClass="champ-nom" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="valType" styleClass="champ-valeur" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="UFR" styleClass="champ-nom" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label fx:id="valUfr" styleClass="champ-valeur" wrapText="true" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label text="Auteur" styleClass="champ-nom" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label fx:id="valAuteur" styleClass="champ-valeur" wrapText="true" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        <Label text="Encadrant" styleClass="champ-nom" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <Label fx:id="valEncadrant" styleClass="champ-valeur" wrapText="true" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                        <Label text="Année académique" styleClass="champ-nom" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <Label fx:id="valAnnee" styleClass="champ-valeur" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                        <Label text="Discipline" styleClass="champ-nom" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                        <Label fx:id="valDiscipline" styleClass="champ-valeur" wrapText="true" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                        <Label text="Mots-clés" styleClass="champ-nom" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                        <Label fx:id="valMotsCles" styleClass="champ-valeur" wrapText="true" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                    </GridPane>
+
+                    <Label text="Résumé" styleClass="titre-section"/>
+                    <TextArea fx:id="zoneResume" editable="false" wrapText="true" prefRowCount="5"/>
+                </VBox>
+
+                <VBox styleClass="carte" spacing="10" alignment="TOP_CENTER" prefWidth="220" minWidth="220">
+                    <Label text="Niveau d'accès" styleClass="champ-nom"/>
+                    <Label fx:id="badgeAcces"/>
+                    <Label fx:id="labelInfoAcces" styleClass="note-acces" wrapText="true"/>
+                </VBox>
+            </HBox>
+
+            <VBox styleClass="carte" spacing="10">
+                <Label text="Actions" styleClass="titre-section"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="boutonTelecharger" text="⬇ Télécharger" styleClass="bouton-principal" onAction="#onTelecharger"/>
+                    <Button text="👁 Ouvrir" styleClass="bouton-secondaire" onAction="#onOuvrir"/>
+                    <Button fx:id="boutonFavori" text="☆ Ajouter à mes favoris" styleClass="bouton-secondaire" onAction="#onFavori"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="← Retour aux résultats" styleClass="lien" onAction="#onRetour"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
