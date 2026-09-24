@@ -42,7 +42,10 @@ public class TelechargementService {
     public Telechargement telecharger(Utilisateur utilisateur, int idDocument, File destination)
             throws DocumentIntrouvableException, AccesRefuseException, SQLException, IOException {
 
-        Document doc = documentDAO.getParId(idDocument);
+        Document doc = documentDAO.trouverParId(idDocument);
+        if (doc == null) {
+            throw new DocumentIntrouvableException("Aucun document avec l'identifiant " + idDocument);
+        }
         verifierAcces(doc);
 
         Path source = Paths.get(doc.getCheminPdf());
@@ -67,13 +70,12 @@ public class TelechargementService {
     public List<HistoriqueLigne> historiqueDetaille(Utilisateur utilisateur) throws SQLException {
         List<HistoriqueLigne> lignes = new ArrayList<>();
         for (Telechargement t : historique(utilisateur)) {
-            try {
-                Document d = documentDAO.getParId(t.getIdDocument());
+            Document d = documentDAO.trouverParId(t.getIdDocument());
+            if (d != null) {
                 lignes.add(new HistoriqueLigne(
                     d.getIdDocument(), d.getTitre(), d.getType(), t.getDateTelechargement()));
-            } catch (DocumentIntrouvableException e) {
-                // Document supprimé depuis le téléchargement : on l'ignore dans l'affichage.
             }
+            // Document supprime depuis le telechargement : on l'ignore dans l'affichage.
         }
         return lignes;
     }

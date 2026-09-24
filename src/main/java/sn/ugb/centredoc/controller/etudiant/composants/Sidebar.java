@@ -1,27 +1,33 @@
 package sn.ugb.centredoc.controller.etudiant.composants;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import sn.ugb.centredoc.controller.etudiant.HistoriqueController;
 import sn.ugb.centredoc.controller.etudiant.NavigationEtudiant;
 import sn.ugb.centredoc.controller.etudiant.RechercheController;
 import sn.ugb.centredoc.model.Utilisateur;
+import sn.ugb.centredoc.util.Session;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Barre de navigation latérale, commune aux 4 écrans étudiant.
- * "Tableau de bord" et "Paramètres" ne font pas partie du module étudiant
- * (ils appartiennent à d'autres membres de l'équipe) : ils affichent un message neutre.
+ * Barre de navigation laterale, commune aux 4 ecrans etudiant.
+ * Meme structure visuelle que le dashboard Gestionnaire : logo + role + nom,
+ * separateur, items texte simple, deconnexion en bas.
  */
 public final class Sidebar {
 
@@ -38,34 +44,38 @@ public final class Sidebar {
             logo.getChildren().add(imageLogo);
         }
         VBox texteLogo = new VBox(1);
-        Label titreLogo = new Label("UGB");
-        titreLogo.getStyleClass().add("sidebar-logo-titre");
-        Label sousLogo = new Label("Université Gaston Berger\nSaint-Louis du Sénégal");
+        Label titreLogo = new Label("Etudiant");
+        titreLogo.getStyleClass().add("sidebar-titre");
+        String nomComplet = (utilisateur.getPrenom() == null ? "" : utilisateur.getPrenom())
+                + " " + (utilisateur.getNom() == null ? "" : utilisateur.getNom());
+        Label sousLogo = new Label(nomComplet.trim().isEmpty() ? "Etudiant" : nomComplet.trim());
         sousLogo.getStyleClass().add("sidebar-logo-sous");
-        sousLogo.setWrapText(true);
         texteLogo.getChildren().addAll(titreLogo, sousLogo);
         logo.getChildren().add(texteLogo);
+
+        Separator separateur = new Separator();
+        separateur.getStyleClass().add("sidebar-separateur");
 
         VBox nav = new VBox(4);
         nav.getStyleClass().add("sidebar-nav");
         nav.getChildren().addAll(
-                item("🏠", "Tableau de bord", "tableau-de-bord".equals(ongletActif),
+                item("Tableau de bord", "tableau-de-bord".equals(ongletActif),
                         () -> indisponible()),
-                item("📄", "Documents", "documents".equals(ongletActif),
+                item("Documents", "documents".equals(ongletActif),
                         () -> allerRecherche(source, utilisateur)),
-                item("🕒", "Historique", "historique".equals(ongletActif),
+                item("Historique", "historique".equals(ongletActif),
                         () -> allerHistorique(source, utilisateur)),
-                item("⚙", "Paramètres", "parametres".equals(ongletActif),
+                item("Parametres", "parametres".equals(ongletActif),
                         () -> indisponible())
         );
 
         Region espace = new Region();
         VBox.setVgrow(espace, Priority.ALWAYS);
 
-        Button deconnexion = item("↪", "Déconnexion", false, Sidebar::indisponible);
-        deconnexion.getStyleClass().add("sidebar-deconnexion");
+        Button deconnexion = item("Deconnexion", false, () -> deconnecter(source));
+        deconnexion.getStyleClass().add("sidebar-bouton-deconnexion");
 
-        racine.getChildren().addAll(logo, nav, espace, deconnexion);
+        racine.getChildren().addAll(logo, separateur, nav, espace, deconnexion);
         return racine;
     }
 
@@ -84,11 +94,11 @@ public final class Sidebar {
         }
     }
 
-    private static Button item(String icone, String texte, boolean actif, Runnable action) {
-        Button b = new Button(icone + "  " + texte);
-        b.getStyleClass().add("sidebar-item");
+    private static Button item(String texte, boolean actif, Runnable action) {
+        Button b = new Button(texte);
+        b.getStyleClass().add("sidebar-bouton");
         if (actif) {
-            b.getStyleClass().add("sidebar-item-actif");
+            b.getStyleClass().add("sidebar-bouton-actif");
         }
         b.setMaxWidth(Double.MAX_VALUE);
         b.setOnAction(e -> action.run());
@@ -113,8 +123,21 @@ public final class Sidebar {
         }
     }
 
+    /** Deconnexion reelle : vide la session et retourne a l'ecran de connexion, comme cote Admin/Gestionnaire. */
+    private static void deconnecter(Node source) {
+        Session.deconnecter();
+        try {
+            FXMLLoader loader = new FXMLLoader(Sidebar.class.getResource("/fxml/login.fxml"));
+            Parent racine = loader.load();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setScene(new Scene(racine));
+        } catch (IOException e) {
+            alerte("Erreur lors de la deconnexion : " + e.getMessage());
+        }
+    }
+
     private static void indisponible() {
-        alerte("Cet écran fait partie du module d'un autre membre de l'équipe.");
+        alerte("Cet ecran fait partie du module d'un autre membre de l'equipe.");
     }
 
     private static void alerte(String message) {

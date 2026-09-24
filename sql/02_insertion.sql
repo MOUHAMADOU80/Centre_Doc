@@ -9,13 +9,13 @@ INSERT INTO ufr (nom) VALUES
 ('UFR Lettres et Sciences Humaines'),
 ('UFR Sciences Juridiques et Politiques');
 
--- ============================================
--- Administrateur
--- Email : admin@ugb.edu.sn
+
+ Administrateur
+Email : admin@ugb.edu.sn
 -- Mot de passe : admin123
--- ============================================
+
 INSERT INTO utilisateurs (nom, prenom, email, role, mot_de_passe) VALUES
-('Diallo', 'Admin', 'admin@ugb.edu.sn', 'ADMIN', 'JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=');
+('Diallo', 'Admin', 'admin@ugb.edu.sn', 'ADMIN', 'admine12');
 
 -- ============================================
 -- Etudiants (connexion sans mot de passe : nom, prenom, email, code_etudiant)

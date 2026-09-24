@@ -11,9 +11,7 @@ import sn.ugb.centredoc.model.enums.NiveauAcces;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RechercheService {
 
@@ -22,9 +20,11 @@ public class RechercheService {
     private final DocumentDAO documentDAO = new DocumentDAO();
     private final UfrDAO ufrDAO = new UfrDAO();
 
-    /** Recherche multicritère. Un critère null ou vide est ignoré. */
-    public List<Document> rechercher(String titre, String auteur, String motCle,
-                                     Integer annee, Integer idUfr, String discipline)
+    /**
+     * Recherche : le mot-cle est cherche dans le titre, l'auteur ET les mots-cles (OU),
+     * combine avec les filtres annee/UFR/discipline (ET). Un critere null ou vide est ignore.
+     */
+    public List<Document> rechercher(String motCle, Integer annee, Integer idUfr, String discipline)
             throws ChampInvalideException, SQLException {
 
         if (annee != null && annee < ANNEE_MIN) {
@@ -32,8 +32,10 @@ public class RechercheService {
         }
 
         List<Document> trouves = documentDAO.rechercher(
-                nettoyer(titre), nettoyer(auteur), nettoyer(motCle),
-                annee, idUfr, nettoyer(discipline));
+                nettoyer(motCle),
+                annee == null ? null : String.valueOf(annee),
+                idUfr == null ? null : String.valueOf(idUfr),
+                nettoyer(discipline));
 
         List<Document> resultat = new ArrayList<>();
         for (Document d : trouves) {
@@ -42,33 +44,20 @@ public class RechercheService {
         return resultat;
     }
 
-    /** Un seul texte libre : cherché dans le titre OU l'auteur OU les mots-clés. */
+    /** Alias conserve pour compatibilite avec les controleurs : le DAO fait deja la recherche OU. */
     public List<Document> rechercherLibre(String texte, Integer annee, Integer idUfr, String discipline)
             throws ChampInvalideException, SQLException {
-
-        String t = nettoyer(texte);
-        if (t == null) {
-            return rechercher(null, null, null, annee, idUfr, discipline);
-        }
-
-        Map<Integer, Document> fusion = new LinkedHashMap<>();
-        for (Document d : rechercher(t, null, null, annee, idUfr, discipline)) {
-            fusion.put(d.getIdDocument(), d);
-        }
-        for (Document d : rechercher(null, t, null, annee, idUfr, discipline)) {
-            fusion.putIfAbsent(d.getIdDocument(), d);
-        }
-        for (Document d : rechercher(null, null, t, annee, idUfr, discipline)) {
-            fusion.putIfAbsent(d.getIdDocument(), d);
-        }
-        return new ArrayList<>(fusion.values());
+        return rechercher(texte, annee, idUfr, discipline);
     }
 
     /** Fiche détaillée : refusée si le document est sous embargo (règle 3). */
     public Document consulter(int idDocument)
             throws DocumentIntrouvableException, AccesRefuseException, SQLException {
 
-        Document d = documentDAO.getParId(idDocument);
+        Document d = documentDAO.trouverParId(idDocument);
+        if (d == null) {
+            throw new DocumentIntrouvableException("Aucun document avec l'identifiant " + idDocument);
+        }
         if (estSousEmbargo(d)) {
             throw new AccesRefuseException(
                 "Ce document est sous embargo : il n'est pas consultable.");
